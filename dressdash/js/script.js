@@ -878,6 +878,8 @@ function updateGraphPanel(panelId) {
 
 /* Color Panel */
 function createColorPanel(panelId) {
+  //update neopixel number
+  currentBoard.neopixels = 10;
   // Create Panel from Template
   let panelTemplate = loadPanelTemplate(panelId);
 
