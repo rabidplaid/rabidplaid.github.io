@@ -77,9 +77,15 @@ const boards = {
   },
   unknown: {
     colorOrder: 'GRB',
-    neopixels: 1,
-    hasSwitch: false,
+    neopixels: 10,
+    hasSwitch: true,
     buttons: 1,
+  },
+  KlingonWedding: {
+    colorOrder: 'GRB',
+    neopixels: 10,
+    hasSwitch: true,
+    buttons: 2,
   }
 }
 
@@ -878,8 +884,6 @@ function updateGraphPanel(panelId) {
 
 /* Color Panel */
 function createColorPanel(panelId) {
-  //update neopixel number
-  currentBoard.neopixels = 10;
   // Create Panel from Template
   let panelTemplate = loadPanelTemplate(panelId);
 
