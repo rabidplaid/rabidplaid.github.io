@@ -887,7 +887,7 @@ function createColorPanel(panelId) {
   // Update the panel packet sequence to match the number of LEDs on board
   panels[panelId].packetSequence = panels[panelId].structure.slice(0, 2);
   let dataType = panels[panelId].structure[2].replace(/\[\]/, '');
-  for (let i = 0; i < currentBoard.neopixels * 3; i++) {
+  for (let i = 0; i < (currentBoard.neopixels + 3) * 3; i++) {
     panels[panelId].packetSequence.push(dataType);
   }
 
