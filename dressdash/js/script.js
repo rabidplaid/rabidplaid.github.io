@@ -894,11 +894,11 @@ function createColorPanel(panelId) {
   // RGB Color Picker
   function updateModelLed(color) {
     logMsg("Changing neopixel to " + color.hex());
-    logMsg("CurrentBoard neopixels = " + currentBoard.neopixels)
+    logMsg("CurrentBoard neopixels = " + currentBoard.neopixels);
     let orderedColors = adjustColorOrder(Math.round(color.r() * 255),
                                          Math.round(color.g() * 255),
                                          Math.round(color.b() * 255));
-    let values = [0, 2].concat(new Array(currentBoard.neopixels).fill(orderedColors).flat());
+    let values = [0, 1].concat(new Array(currentBoard.neopixels).fill(orderedColors).flat());
     let packet = encodePacket(panelId, values);
     panels[panelId].characteristic.writeValue(packet)
     .catch(error => {console.log(error);})
