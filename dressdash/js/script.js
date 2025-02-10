@@ -887,17 +887,18 @@ function createColorPanel(panelId) {
   // Update the panel packet sequence to match the number of LEDs on board
   panels[panelId].packetSequence = panels[panelId].structure.slice(0, 2);
   let dataType = panels[panelId].structure[2].replace(/\[\]/, '');
-  for (let i = 0; i < (currentBoard.neopixels + 3) * 3; i++) {
+  for (let i = 0; i < currentBoard.neopixels * 3; i++) {
     panels[panelId].packetSequence.push(dataType);
   }
 
   // RGB Color Picker
   function updateModelLed(color) {
     logMsg("Changing neopixel to " + color.hex());
+    logMsg("CurrentBoard neopixels = " + currentBoard.neopixels)
     let orderedColors = adjustColorOrder(Math.round(color.r() * 255),
                                          Math.round(color.g() * 255),
                                          Math.round(color.b() * 255));
-    let values = [0, 1].concat(new Array(currentBoard.neopixels).fill(orderedColors).flat());
+    let values = [0, 2].concat(new Array(currentBoard.neopixels).fill(orderedColors).flat());
     let packet = encodePacket(panelId, values);
     panels[panelId].characteristic.writeValue(packet)
     .catch(error => {console.log(error);})
