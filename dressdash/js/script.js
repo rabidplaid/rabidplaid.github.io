@@ -915,6 +915,8 @@ function createColorPanel(panelId) {
     switch(currentBoard.colorOrder) {
       case 'GRB':
         return [green, red, blue];
+      case 'BGR':
+        return [blue, green, red];
       default:
         return [red, green, blue];
     }
