@@ -82,8 +82,8 @@ const boards = {
     buttons: 1,
   },
   KlingonWedding: {
-    colorOrder: 'GRB',
-    neopixels: 10,
+    colorOrder: 'BGR',
+    neopixels: 200,
     hasSwitch: true,
     buttons: 2,
   }
@@ -900,7 +900,6 @@ function createColorPanel(panelId) {
   // RGB Color Picker
   function updateModelLed(color) {
     logMsg("Changing neopixel to " + color.hex());
-    logMsg("CurrentBoard neopixels = " + currentBoard.neopixels);
     let orderedColors = adjustColorOrder(Math.round(color.r() * 255),
                                          Math.round(color.g() * 255),
                                          Math.round(color.b() * 255));
