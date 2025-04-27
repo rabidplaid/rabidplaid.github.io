@@ -82,8 +82,8 @@ const boards = {
     buttons: 1,
   },
   KlingonWedding: {
-    colorOrder: 'BGR',
-    neopixels: 200,
+    colorOrder: 'GRB',
+    neopixels: 10,
     hasSwitch: true,
     buttons: 2,
   }
@@ -915,8 +915,8 @@ function createColorPanel(panelId) {
     switch(currentBoard.colorOrder) {
       case 'GRB':
         return [green, red, blue];
-      case 'BGR':
-        return [blue, green, red];
+      // case 'BGR':
+      //   return [blue, green, red];
       default:
         return [red, green, blue];
     }
