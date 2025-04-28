@@ -57,30 +57,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 const boards = {
-  CLUE: {
-    colorOrder: 'GRB',
-    neopixels: 1,
-    hasSwitch: false,
-    buttons: 2,
-  },
-  CPlay: {
-    colorOrder: 'GRB',
-    neopixels: 10,
-    hasSwitch: true,
-    buttons: 2,
-  },
-  Sense: {
-    colorOrder: 'GRB',
-    neopixels: 1,
-    hasSwitch: false,
-    buttons: 1,
-  },
-  unknown: {
-    colorOrder: 'GRB',
-    neopixels: 10,
-    hasSwitch: true,
-    buttons: 1,
-  },
   KlingonWedding: {
     colorOrder: 'BGR',
     neopixels: 50,
@@ -271,10 +247,20 @@ let panels = {
     panelType: "custom",
     create: function(panelId) {
       let panelTemplate = loadPanelTemplate(panelId, 'play-button');
-      panelTemplate.querySelector(".content .button").onclick = function() {
+      panelTemplate.querySelector(".content .button1").onclick = function() {
         let button = this;
         button.disabled = true;
-        playSound(440, 1000, function() {button.disabled = false;})
+        playSound(100, 1000, function() {button.disabled = false;})
+      }
+      panelTemplate.querySelector(".content .button2").onclick = function() {
+        let button = this;
+        button.disabled = true;
+        playSound(200, 1000, function() {button.disabled = false;})
+      }
+      panelTemplate.querySelector(".content .button3").onclick = function() {
+        let button = this;
+        button.disabled = true;
+        playSound(300, 1000, function() {button.disabled = false;})
       }
       this.packetSequence = this.structure;
     },
