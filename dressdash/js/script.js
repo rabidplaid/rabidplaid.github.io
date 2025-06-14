@@ -26,7 +26,6 @@ const autoscroll = document.getElementById('autoscroll');
 const showTimestamp = document.getElementById('showTimestamp');
 const lightSS = document.getElementById('light');
 const darkSS = document.getElementById('dark');
-const darkMode = document.getElementById('darkmode');
 const dashboard = document.getElementById('dashboard');
 const fpsCounter = document.getElementById("fpsCounter");
 const knownOnly = document.getElementById("knownonly");
@@ -42,7 +41,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   butClear.addEventListener('click', clickClear);
   autoscroll.addEventListener('click', clickAutoscroll);
   showTimestamp.addEventListener('click', clickTimestamp);
-  darkMode.addEventListener('click', clickDarkMode);
   knownOnly.addEventListener('click', clickKnownOnly);
 
   if ('bluetooth' in navigator) {
@@ -534,12 +532,6 @@ function updateTheme() {
     .forEach((styleSheet) => {
       enableStyleSheet(styleSheet, false);
     });
-
-  if (darkMode.checked) {
-    enableStyleSheet(darkSS, true);
-  } else {
-    enableStyleSheet(lightSS, true);
-  }
 }
 
 function enableStyleSheet(node, enabled) {
@@ -620,15 +612,6 @@ async function clickTimestamp() {
   saveSetting('timestamp', showTimestamp.checked);
 }
 
-/**
- * @name clickDarkMode
- * Change handler for the Dark Mode checkbox.
- */
-async function clickDarkMode() {
-  updateTheme();
-  saveSetting('darkmode', darkMode.checked);
-}
-
 
 
 /**
@@ -668,7 +651,6 @@ function loadAllSettings() {
   // Load all saved settings or defaults
   autoscroll.checked = loadSetting('autoscroll', true);
   showTimestamp.checked = loadSetting('timestamp', false);
-  darkMode.checked = loadSetting('darkmode', false);
   knownOnly.checked = loadSetting('knownonly', true);
 }
 
