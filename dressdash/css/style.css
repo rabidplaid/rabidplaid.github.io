@@ -82,6 +82,10 @@ main {
 	font-weight:300;
 }
 
+footer {
+  display:none;
+}
+
 /* https://www.a11yproject.com/posts/how-to-hide-content/ */
 .visually-hidden {
 	clip: rect(0 0 0 0);

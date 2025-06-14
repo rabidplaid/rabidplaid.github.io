@@ -374,7 +374,7 @@ async function connect() {
     const availableServices = await server.getPrimaryServices();
 
     // Create the panels only if service available
-    document.querySelector("#currentboard").innerHTML = "Connected To: " + currentBoard;
+    document.querySelector("#currentboard").innerHTML = "Connected To: " + device.name;
     for (let panelId of Object.keys(panels)) {
       if (panels[panelId].condition == undefined || panels[panelId].condition()) {
         if (getFullId(panels[panelId].serviceId).substr(0, 4) == "adaf") {
