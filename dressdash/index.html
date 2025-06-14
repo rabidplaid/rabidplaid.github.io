@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Adafruit Web Bluetooth Dashboard</title>
+    <title>Wedding Dress Dashboard</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,22 +27,50 @@
     <script src="js/graph.js" defer></script>
 
     <!-- import the web page's stylesheets along with the themes -->
+    <link href="https://fonts.googleapis.com/css2?family=Anaheim:wght@400..800&family=Anek+Gurmukhi:wght@100..800&family=Pavanam&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.typekit.net/qtk5kiq.css">
+    <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/light.css" id="light" class="alternate" disabled>
-    <link rel="stylesheet" href="css/dark.css"  id="dark"  class="alternate" disabled>
     <link rel="stylesheet" href="css/colorjoe.css">
 
     <!-- import the webpage's javascript file -->
     <script type="module" src="js/script.js" defer></script>
   </head>
-  <body>
-    <header class="header">
-      <div class="left">
-        <img src="assets/adafruit-logo.svg" class="Adafruit-Logo">
-      </div>
-      <div class="right">
-        <label for="knownonly">
+
+    <body style="display:grid;">
+
+    <div class="lcar head1"><span>56-569236</span></div>
+
+    <header>
+      <a href="/" class="home-link"><span>Wedding Dress Dashboard</span> <span class="head-circle">&#9679;</span><span>06.21.25</span></a>
+    </header>
+
+
+    <div class="lcar head2"></div>
+    <div class="lcar head3"></div>
+    <ul class="lcar head4 nav">
+      <div class="mobile-nav-head"><div class="close">Close</div></div>
+      <li class="nav-item">Connected to: </li>
+      <li class="nav-item"><button id="butConnect" type="button">Connect</button></li>
+    </ul>
+    <div class="lcar head6"><span class="menuIcon"><svg viewBox="0 0 100 80" width="20" height="20">
+  <rect width="100" height="20"></rect>
+  <rect y="30" width="100" height="20"></rect>
+  <rect y="60" width="100" height="20"></rect>
+</svg> Menu</span></div>
+    <div class="lcar head7">01-25074</div>
+    <div class="lcar head8"></div>
+    <div class="lcar head9"></div>
+    <div class="lcar head11"></div>
+    <div class="lcar head12"></div>
+    <div class="lcar head13"></div>
+    <div class="lcar side1">02-69250</div>
+    <div class="lcar side2">03-14702</div>
+    <div class="lcar side3">04-32456</div>
+
+    </header>
+    <main class="main">
+<!--       <label for="knownonly">
           Show only known devices
         </label>
         <div class="onoffswitch">
@@ -51,33 +79,12 @@
             <span class="onoffswitch-inner"></span>
             <span class="onoffswitch-switch"></span>
           </label>
-        </div>
-        <button id="butConnect" type="button">Connect</button>
-      </div>
-    </header>
-    <main class="main">
+        </div> -->
       <div id="notSupported" class="notSupported">
         Sorry, <b>Web Bluetooth</b> is not supported on this device, make sure you're
         running Chrome 56 or later. If you are running linux, make sure you have enabled the
         <code>#enable-experimental-web-platform-features</code> flag in
         <code>chrome://flags</code>
-      </div>
-      <div class="subheader">
-        <div class="title left">
-          Web Bluetooth Dashboard
-        </div>
-        <div class="right">
-          <label for="darkmode">
-            Dark Mode
-          </label>
-          <div class="onoffswitch">
-            <input type="checkbox" name="darkmode" class="onoffswitch-checkbox" id="darkmode">
-            <label class="onoffswitch-label" for="darkmode">
-              <span class="onoffswitch-inner"></span>
-              <span class="onoffswitch-switch"></span>
-            </label>
-          </div>
-        </div>
       </div>
       <div id="dashboard"></div>
       <div id="log"></div>
