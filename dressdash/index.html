@@ -69,7 +69,8 @@
 
     </header>
     <main class="main">
-      <label for="knownonly">
+      <div class="knownonly">
+        <label for="knownonly">
           Show only known devices
         </label>
         <div class="onoffswitch">
@@ -79,13 +80,32 @@
             <span class="onoffswitch-switch"></span>
           </label>
         </div>
+      </div>
       <div id="notSupported" class="notSupported">
         Sorry, <b>Web Bluetooth</b> is not supported on this device, make sure you're
         running Chrome 56 or later. If you are running linux, make sure you have enabled the
         <code>#enable-experimental-web-platform-features</code> flag in
         <code>chrome://flags</code>
       </div>
-      <div id="dashboard"></div>
+      <div id="dashboard">
+<!--
+        <div class="play-button">
+        <div class="title">
+          title
+        </div>
+        <div class="content">
+          <div class="button button1">
+            <span>rainbow</span>
+          </div>
+          <div class="button button2">
+            <span>strobe</span>
+          </div>
+          <div class="button button3">
+            <span>flag</span>
+          </div>
+        </div>
+      </div> -->
+      </div>
       <div id="log"></div>
     </main>
     <footer class="footer">

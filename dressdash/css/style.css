@@ -82,7 +82,7 @@ main {
 	font-weight:300;
 }
 
-footer {
+footer, .knownonly {
   display:none;
 }
 
@@ -486,45 +486,6 @@ a[href].lcar, a[href]:visited.lcar {
   font-size: 1em;
 }
 
-/* Posts list */
-.postlist {
-	list-style: none;
-	padding: 0;
-	padding-left: 1.5rem;
-	text-align: justify;
-}
-.postlist-item {
-	align-items: baseline;
-	counter-increment: start-from -1;
-	margin-bottom: 5em;
-	text-align: center;
-}
-
-.postlist-item p {
-	margin: 0.5em 0;
-}
-.postlist h1 {
-	font-size:2em;
-	margin-block-end: 0;
-}
-.postlist h1 a[href], .postlist h1 a[href]:visited {
-	font-weight:300;
-	color:var(--color-secondary);
-}
-.postlist-date,
-.postlist-item:before {
-	font-size: 0.8125em; /* 13px /16 */
-	color: var(--color-gray-90);
-}
-.postlist-date {
-	word-spacing: -0.5px;
-}
-.postlist-link {
-	padding: 1em 0;
-	text-underline-position: from-font;
-	text-underline-offset: 0;
-	text-decoration-thickness: 1px;
-}
 
 /* Gallery */
 
@@ -543,30 +504,6 @@ a[href].lcar, a[href]:visited.lcar {
 	object-fit: cover;
 }
 
-/* Tags */
-.post-tag {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	text-transform: capitalize;
-	font-style: italic;
-}
-.postlist-item > .post-tag {
-	align-self: center;
-}
-
-/* Tags list */
-.post-metadata {
-	display: inline-flex;
-	flex-wrap: wrap;
-	gap: .5em;
-	list-style: none;
-	padding: 0;
-	margin: 0;
-}
-.post-metadata time {
-	margin-right: 1em;
-}
 
 .menuIcon {
   display:none;
@@ -607,8 +544,26 @@ a[href].lcar, a[href]:visited.lcar {
 	}
 
 	.home-link, a.home-link, a.home-link:visited {
-		font-size:4em;
+		font-size:3.8em;
 	}
+}
+
+#dashboard .play-button .button {
+  font-family: var(--font-header);
+  cursor:pointer;
+  text-decoration: none;
+  font-weight:300;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #000;
+  padding:20px 35px;
+  font-size:3em;
+  background-color:var(--pink2);
+  border-radius: 30px;
+  transition: background-color 0.5s ease-in-out;
+}
+#dashboard .play-button .button:hover {
+  background-color: var(--pink1);
 }
 
 @media screen and (max-width: 1000px) {
@@ -648,6 +603,10 @@ a[href].lcar, a[href]:visited.lcar {
   }
   .freezeScroll {
   	overflow:hidden;
+  }
+
+  .nav-item {
+    width:100%;
   }
 /*	.nav {
 		display:flex;
@@ -709,7 +668,7 @@ a[href].lcar, a[href]:visited.lcar {
 	}
 
 	.home-link, a.home-link, a.home-link:visited {
-		font-size:9vi;
+		font-size:6vi;
 	}
 }
 

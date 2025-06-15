@@ -69,7 +69,6 @@ div.clear {
 .main {
   overflow-x: hidden;
   overflow-y: auto;
-  padding-top: 80px;
 }
 
 .hidden {
@@ -96,20 +95,12 @@ div.clear {
 
 #dashboard {
   position: relative;
-  height: calc(60vh - 190px);
   margin: 0 auto;
-  overflow-y: auto;
-  padding: 0 60px;
 }
 
 #dashboard > div {
-  width: 244px;
-  height: 244px;
-  margin: 0 10px 20px;
-  border-width: 1px;
-  border-style: solid;
-  border-radius: 4px;
-  float: left;
+  width: auto;
+  height: auto;
 }
 
 #dashboard .title {
@@ -126,10 +117,6 @@ div.clear {
 }
 
 #dashboard .content {
-  height: 200px;
-  width: 244px;
-  font-size: 24px;
-  font-weight: 600;
 }
 
 /* Text Panel */
@@ -316,8 +303,6 @@ div.clear {
 /* Tone Panel */
 #dashboard .play-button .content {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
 
@@ -325,16 +310,9 @@ div.clear {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f89521;
-  width: 75px;
-  height: 75px;
-  border-radius: 75px;
-}
-
-#dashboard .play-button .button span {
-  width: 0;
-  height: 0;
-  display: block;
+  width: auto;
+  height: auto;
+  margin:5px;
 }
 
 /* Battery Level Panel */
