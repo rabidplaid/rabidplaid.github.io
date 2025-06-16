@@ -344,17 +344,15 @@ async function connect() {
 
   console.log('Requesting Bluetooth Device...');
   console.log('with ' + JSON.stringify(options));
-  device = await navigator.bluetooth.requestDevice(options);
-  // .then(device => {
-  //   log('> Name:             ' + device.name);
-  //   log('> Id:               ' + device.id);
-  //   log('> Connected:        ' + device.gatt.connected);
-  // })
-  // .catch(error => {
-  //   log('Argh! ' + error);
-  // });
-
-  return;
+  device = await navigator.bluetooth.requestDevice(options)
+    .then(device => {
+      log('> Name:             ' + device.name);
+      log('> Id:               ' + device.id);
+      log('> Connected:        ' + device.gatt.connected);
+    })
+    .catch(error => {
+      log('Argh! ' + error);
+    });
 
   // - Request a port and open a connection.
   if (!device) {
