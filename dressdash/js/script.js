@@ -379,7 +379,7 @@ async function connect() {
           // logMsg("adaf: " + panelId);
           for (const service of availableServices) {
             logMsg("service: " + service);
-            if (getFullId(panels[panelId].serviceId) == service.uuid) {
+            if (getFullId(panels[panelId].serviceId).toLowerCase() == service.uuid.toLowerCase()) {
               logMsg("Creating panel: " + panelId);
               createPanel(panelId);
             }
