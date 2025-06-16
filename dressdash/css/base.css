@@ -331,6 +331,7 @@ div.clear {
   padding: 3px;
   border-radius: 10px;
   position: relative;
+  display:none;
 }
 
 #dashboard .battery-level .battery:after {
