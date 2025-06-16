@@ -342,8 +342,8 @@ async function connect() {
   let options = {};
   options.acceptAllDevices = true;
 
-  log('Requesting Bluetooth Device...');
-  log('with ' + JSON.stringify(options));
+  console.log('Requesting Bluetooth Device...');
+  console.log('with ' + JSON.stringify(options));
   device = await navigator.bluetooth.requestDevice(options);
   // .then(device => {
   //   log('> Name:             ' + device.name);
