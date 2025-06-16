@@ -354,6 +354,7 @@ async function connect() {
       device = await navigator.bluetooth.requestDevice({
         filters: filters,
         optionalServices: services,
+        acceptAllDevices: true,
       });
     } else {
       device = await navigator.bluetooth.requestDevice({
