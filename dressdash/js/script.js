@@ -331,6 +331,8 @@ function encodePacket(panelId, values) {
   return view.buffer;
 }
 
+alert("v1");
+
 /**
  * @name connect
  * Opens a Web Serial connection to a micro:bit and sets up the input and
@@ -365,24 +367,14 @@ async function connect() {
     device.addEventListener('gattserverdisconnected', onDisconnected);
     let server = await device.gatt.connect();
     const availableServices = await server.getPrimaryServices();
-    logMsg("availableServices length and UUID: " + availableServices.length + ' ' + availableServices[0].uuid);
-    console.log(availableServices.length);
 
     // Create the panels only if service available
     document.querySelector("#currentboard").innerHTML = "Connected To: " + device.name;
-    logMsg("Iterating panels...");
     for (let panelId of Object.keys(panels)) {
-      logMsg("Iterating panel: " + panelId);
       if (panels[panelId].condition == undefined || panels[panelId].condition()) {
-        // logMsg("condition: " + panelId);
         if (getFullId(panels[panelId].serviceId).substr(0, 4) == "adaf") {
-          // logMsg("adaf: " + panelId);
           for (const service of availableServices) {
-            logMsg("service: " + service);
-            let a = getFullId(panels[panelId].serviceId).toLowerCase();
-            let b = service.uuid.toLowerCase();
-            logMsg("cmp: " + a + " " + b);
-            if (a == b) {
+            if (getFullId(panels[panelId].serviceId).toLowerCase() == service.uuid.toLowerCase()) {
               logMsg("Creating panel: " + panelId);
               createPanel(panelId);
             }
@@ -504,7 +496,7 @@ function getFullId(shortId) {
 }
 
 function logMsg(text) {
-  alert(text);
+  // alert(text);
   console.log("[log] " + text);
   // Update the Log
   if (showTimestamp.checked) {
