@@ -368,11 +368,17 @@ async function connect() {
 
     // Create the panels only if service available
     document.querySelector("#currentboard").innerHTML = "Connected To: " + device.name;
+    logMsg("Iterating panels...");
     for (let panelId of Object.keys(panels)) {
+      logMsg("Iterating panel: " + panelId);
       if (panels[panelId].condition == undefined || panels[panelId].condition()) {
+        logMsg("condition: " + panelId);
         if (getFullId(panels[panelId].serviceId).substr(0, 4) == "adaf") {
+          logMsg("adaf: " + panelId);
           for (const service of availableServices) {
+            logMsg("service: " + service);
             if (getFullId(panels[panelId].serviceId) == service.uuid) {
+              logMsg("Creating panel: " + panelId);
               createPanel(panelId);
             }
           }
