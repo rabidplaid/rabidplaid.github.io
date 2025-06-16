@@ -345,6 +345,7 @@ async function connect() {
       services.push(getFullId(panels[panelId].serviceId));
     }
     if (knownOnly.checked) {
+      console.log("knownOnly was checked");
       let knownBoards = Object.keys(boards);
       knownBoards.pop();
       let filters = [];
@@ -352,11 +353,12 @@ async function connect() {
         filters.push({name: board});
       }
       device = await navigator.bluetooth.requestDevice({
-        filters: filters,
+        // filters: filters,
         optionalServices: services,
         acceptAllDevices: true,
       });
     } else {
+      console.log("knownOnly was NOT checked");
       device = await navigator.bluetooth.requestDevice({
         acceptAllDevices: true,
         optionalServices: services,
