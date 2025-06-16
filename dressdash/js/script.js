@@ -337,50 +337,43 @@ function encodePacket(panelId, values) {
  * output stream.
  */
 async function connect() {
-  let filters = [];
-
-  let options = {};
-  options.acceptAllDevices = true;
-
-  console.log('Requesting Bluetooth Device...');
-  console.log('with ' + JSON.stringify(options));
-  device = await navigator.bluetooth.requestDevice(options)
-    .then(device => {
-      log('> Name:             ' + device.name);
-      log('> Id:               ' + device.id);
-      log('> Connected:        ' + device.gatt.connected);
-    })
-    .catch(error => {
-      log('Argh! ' + error);
-    });
 
   // - Request a port and open a connection.
   if (!device) {
-    logMsg('Connecting to device ...');
-    let services = [];
-    for (let panelId of Object.keys(panels)) {
-      services.push(getFullId(panels[panelId].serviceId));
-    }
-    if (knownOnly.checked) {
-      console.log("knownOnly was checked");
-      let knownBoards = Object.keys(boards);
-      knownBoards.pop();
-      let filters = [];
-      for(let board of knownBoards) {
-        filters.push({name: board});
-      }
-      device = await navigator.bluetooth.requestDevice({
-        // filters: filters,
-        optionalServices: services,
-        acceptAllDevices: true,
-      });
-    } else {
-      console.log("knownOnly was NOT checked");
-      device = await navigator.bluetooth.requestDevice({
-        acceptAllDevices: true,
-        optionalServices: services,
-      });
-    }
+    // logMsg('Connecting to device ...');
+    // let services = [];
+    // for (let panelId of Object.keys(panels)) {
+    //   services.push(getFullId(panels[panelId].serviceId));
+    // }
+    // if (knownOnly.checked) {
+    //   console.log("knownOnly was checked");
+    //   let knownBoards = Object.keys(boards);
+    //   knownBoards.pop();
+    //   let filters = [];
+    //   for(let board of knownBoards) {
+    //     filters.push({name: board});
+    //   }
+    //   device = await navigator.bluetooth.requestDevice({
+    //     // filters: filters,
+    //     optionalServices: services,
+    //     acceptAllDevices: true,
+    //   });
+    // } else {
+    //   console.log("knownOnly was NOT checked");
+    //   device = await navigator.bluetooth.requestDevice({
+    //     acceptAllDevices: true,
+    //     optionalServices: services,
+    //   });
+    // }
+
+    let filters = [];
+
+    let options = {};
+    options.acceptAllDevices = true;
+
+    console.log('Requesting Bluetooth Device...');
+    console.log('with ' + JSON.stringify(options));
+    device = await navigator.bluetooth.requestDevice(options);
   }
   if (device) {
     logMsg("Connected to device " + device.name);
