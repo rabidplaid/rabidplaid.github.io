@@ -110,124 +110,124 @@ let panels = {
   //     }
   //   },
   // },
-  temperature: {
-    serviceId: '0100',
-    characteristicId: '0101',
-    panelType: "graph",
-    structure: ['Float32'],
-    data: {temperature:[]},
-    properties: ['notify'],
-    textFormat: function(value) {
-      return numeral((9 / 5 * value) + 32).format('0.00') + '&deg; F';
-    },
-  },
-  light: {
-    serviceId: '0300',
-    characteristicId: '0301',
-    panelType: "graph",
-    structure: ['Float32'],
-    data: {light:[]},
-    properties: ['notify'],
-  },
-  accelerometer: {
-    serviceId: '0200',
-    characteristicId: '0201',
-    panelType: "graph",
-    structure: ['Float32', 'Float32', 'Float32'],
-    data: {x:[], y:[], z:[]},
-    properties: ['notify'],
-    textFormat: function(value) {
-      return numeral(value).format('0.00');
-    },
-    measurementPeriod: 500,
-  },
-  gyroscope: {
-    serviceId: '0400',
-    characteristicId: '0401',
-    panelType: "graph",
-    structure: ['Float32', 'Float32', 'Float32'],
-    data: {x:[], y:[], z:[]},
-    properties: ['notify'],
-    textFormat: function(value) {
-      return numeral(value).format('0.00');
-    },
-    measurementPeriod: 500,
-  },
-  magnetometer: {
-    serviceId: '0500',
-    characteristicId: '0501',
-    panelType: "graph",
-    structure: ['Float32', 'Float32', 'Float32'],
-    data: {x:[], y:[], z:[]},
-    properties: ['notify'],
-    textFormat: function(value) {
-      return numeral(value).format('0.00') + ' &micro;T';
-    },
-    measurementPeriod: 500,
-  },
-  buttons: {
-    serviceId: '0600',
-    characteristicId: '0601',
-    panelType: "custom",
-    structure: ['Uint32'],
-    data: {buttonState:[]},
-    properties: ['notify'],
-    create: function(panelId) {
-      let panelTemplate = loadPanelTemplate(panelId, 'onboard-buttons');
-      for (let i = 0; i < currentBoard.buttons; i++) {
-        let buttonTemplate = document.querySelector("#templates > .roundbutton").cloneNode(true);
-        buttonTemplate.id = "button_" + (i + 1);
-        buttonTemplate.querySelector(".text").innerHTML = String.fromCharCode(65 + i);
-        panelTemplate.querySelector(".content").appendChild(buttonTemplate);
-      }
-    },
-    update: function(panelId) {
-      let panelElement = document.querySelector("#dashboard > #" + panelId);
-      buttonState = panels[panelId].data.buttonState.pop();
-      if (panels.switch.condition()) {
-        panels.switch.update('switch'); // Update the switch because we aren't doing 2 notifys
-      }
-      // Match the buttons to the values
-      for (let i = 1; i <= currentBoard.buttons; i++) {
-        if (buttonState & (1 << i)) {
-          panelElement.querySelector("#button_" + i + " .roundbtn").classList.add("pressed");
-        } else {
-          panelElement.querySelector("#button_" + i + " .roundbtn").classList.remove("pressed");
-        }
-      }
-    },
-  },
-  switch: {
-    serviceId: '0600',
-    characteristicId: '0601',
-    panelType: "custom",
-    structure: ['Uint32'],
-    data: {buttonState:[]},
-    properties: [],
-    condition: function() {
-      return currentBoard.hasSwitch;
-    },
-    create: function(panelId) {
-      let panelTemplate = loadPanelTemplate(panelId, 'onboard-switch');
-      this.update(panelId);
-    },
-    update: function(panelId) {
-      // UI Only Update
-      let panelElement = document.querySelector("#dashboard > #" + panelId);
-      panelElement.querySelector(".content #onboardSwitch").checked = buttonState & 1;
-    },
-  },
-  humidity: {
-    serviceId: '0700',
-    characteristicId: '0701',
-    panelType: "graph",
-    structure: ['Float32'],
-    data: {humidity:[]},
-    properties: ['notify'],
-    textFormat: function(value) {
-      return numeral(value).format('0.0') + '%';
-    },
-  },
+  // temperature: {
+  //   serviceId: '0100',
+  //   characteristicId: '0101',
+  //   panelType: "graph",
+  //   structure: ['Float32'],
+  //   data: {temperature:[]},
+  //   properties: ['notify'],
+  //   textFormat: function(value) {
+  //     return numeral((9 / 5 * value) + 32).format('0.00') + '&deg; F';
+  //   },
+  // },
+  // light: {
+  //   serviceId: '0300',
+  //   characteristicId: '0301',
+  //   panelType: "graph",
+  //   structure: ['Float32'],
+  //   data: {light:[]},
+  //   properties: ['notify'],
+  // },
+  // accelerometer: {
+  //   serviceId: '0200',
+  //   characteristicId: '0201',
+  //   panelType: "graph",
+  //   structure: ['Float32', 'Float32', 'Float32'],
+  //   data: {x:[], y:[], z:[]},
+  //   properties: ['notify'],
+  //   textFormat: function(value) {
+  //     return numeral(value).format('0.00');
+  //   },
+  //   measurementPeriod: 500,
+  // },
+  // gyroscope: {
+  //   serviceId: '0400',
+  //   characteristicId: '0401',
+  //   panelType: "graph",
+  //   structure: ['Float32', 'Float32', 'Float32'],
+  //   data: {x:[], y:[], z:[]},
+  //   properties: ['notify'],
+  //   textFormat: function(value) {
+  //     return numeral(value).format('0.00');
+  //   },
+  //   measurementPeriod: 500,
+  // },
+  // magnetometer: {
+  //   serviceId: '0500',
+  //   characteristicId: '0501',
+  //   panelType: "graph",
+  //   structure: ['Float32', 'Float32', 'Float32'],
+  //   data: {x:[], y:[], z:[]},
+  //   properties: ['notify'],
+  //   textFormat: function(value) {
+  //     return numeral(value).format('0.00') + ' &micro;T';
+  //   },
+  //   measurementPeriod: 500,
+  // },
+  // buttons: {
+  //   serviceId: '0600',
+  //   characteristicId: '0601',
+  //   panelType: "custom",
+  //   structure: ['Uint32'],
+  //   data: {buttonState:[]},
+  //   properties: ['notify'],
+  //   create: function(panelId) {
+  //     let panelTemplate = loadPanelTemplate(panelId, 'onboard-buttons');
+  //     for (let i = 0; i < currentBoard.buttons; i++) {
+  //       let buttonTemplate = document.querySelector("#templates > .roundbutton").cloneNode(true);
+  //       buttonTemplate.id = "button_" + (i + 1);
+  //       buttonTemplate.querySelector(".text").innerHTML = String.fromCharCode(65 + i);
+  //       panelTemplate.querySelector(".content").appendChild(buttonTemplate);
+  //     }
+  //   },
+  //   update: function(panelId) {
+  //     let panelElement = document.querySelector("#dashboard > #" + panelId);
+  //     buttonState = panels[panelId].data.buttonState.pop();
+  //     if (panels.switch.condition()) {
+  //       panels.switch.update('switch'); // Update the switch because we aren't doing 2 notifys
+  //     }
+  //     // Match the buttons to the values
+  //     for (let i = 1; i <= currentBoard.buttons; i++) {
+  //       if (buttonState & (1 << i)) {
+  //         panelElement.querySelector("#button_" + i + " .roundbtn").classList.add("pressed");
+  //       } else {
+  //         panelElement.querySelector("#button_" + i + " .roundbtn").classList.remove("pressed");
+  //       }
+  //     }
+  //   },
+  // },
+  // switch: {
+  //   serviceId: '0600',
+  //   characteristicId: '0601',
+  //   panelType: "custom",
+  //   structure: ['Uint32'],
+  //   data: {buttonState:[]},
+  //   properties: [],
+  //   condition: function() {
+  //     return currentBoard.hasSwitch;
+  //   },
+  //   create: function(panelId) {
+  //     let panelTemplate = loadPanelTemplate(panelId, 'onboard-switch');
+  //     this.update(panelId);
+  //   },
+  //   update: function(panelId) {
+  //     // UI Only Update
+  //     let panelElement = document.querySelector("#dashboard > #" + panelId);
+  //     panelElement.querySelector(".content #onboardSwitch").checked = buttonState & 1;
+  //   },
+  // },
+  // humidity: {
+  //   serviceId: '0700',
+  //   characteristicId: '0701',
+  //   panelType: "graph",
+  //   structure: ['Float32'],
+  //   data: {humidity:[]},
+  //   properties: ['notify'],
+  //   textFormat: function(value) {
+  //     return numeral(value).format('0.0') + '%';
+  //   },
+  // },
   barometric_pressure: {
     serviceId: '0800',
     characteristicId: '0801',
@@ -365,6 +365,8 @@ async function connect() {
     device.addEventListener('gattserverdisconnected', onDisconnected);
     let server = await device.gatt.connect();
     const availableServices = await server.getPrimaryServices();
+    logMsg("availableServices length and UUID: " + availableServices.length + ' ' + availableServices[0].uuid);
+    console.log(availableServices.length);
 
     // Create the panels only if service available
     document.querySelector("#currentboard").innerHTML = "Connected To: " + device.name;
@@ -372,9 +374,9 @@ async function connect() {
     for (let panelId of Object.keys(panels)) {
       logMsg("Iterating panel: " + panelId);
       if (panels[panelId].condition == undefined || panels[panelId].condition()) {
-        logMsg("condition: " + panelId);
+        // logMsg("condition: " + panelId);
         if (getFullId(panels[panelId].serviceId).substr(0, 4) == "adaf") {
-          logMsg("adaf: " + panelId);
+          // logMsg("adaf: " + panelId);
           for (const service of availableServices) {
             logMsg("service: " + service);
             if (getFullId(panels[panelId].serviceId) == service.uuid) {
