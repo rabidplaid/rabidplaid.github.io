@@ -316,6 +316,9 @@ div.clear {
 }
 
 /* Battery Level Panel */
+#dashboard .battery-level {
+  display: none !important;
+}
 #dashboard .battery-level .content {
   display: flex;
   flex-direction: column;
@@ -331,7 +334,6 @@ div.clear {
   padding: 3px;
   border-radius: 10px;
   position: relative;
-  display:none;
 }
 
 #dashboard .battery-level .battery:after {
