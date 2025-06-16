@@ -376,6 +376,7 @@ async function connect() {
     device = await navigator.bluetooth.requestDevice(options);
   }
   if (device) {
+    console.log("connected to ...: ", device.name);
     logMsg("Connected to device " + device.name);
     if (boards.hasOwnProperty(device.name)) {
       currentBoard = boards[device.name];
