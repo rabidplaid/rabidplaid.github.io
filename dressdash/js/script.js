@@ -61,55 +61,55 @@ const boards = {
     hasSwitch: true,
     buttons: 2,
   }
-}
+};
 
 let panels = {
-  battery: {
-    title: 'Battery Level',
-    serviceId: 'battery_service',
-    characteristicId: 'battery_level',
-    panelType: "custom",
-    structure: ['Uint8'],
-    data: {battery:[]},
-    properties: ['notify'],
-    textFormat: function(value) {
-      return numeral(value).format('0.0') + '%';
-    },
-    create: function(panelId) {
-      let panelTemplate = loadPanelTemplate(panelId, 'battery-level');
-      this.update(panelId);
-    },
-    update: function(panelId) {
-      let panelElement = document.querySelector("#dashboard > #" + panelId);
-      let value = null;
-      if (panels[panelId].data.battery.length > 0) {
-        value = panels[panelId].data.battery.pop();
-        panels[panelId].data.battery = [];
-      }
+  // battery: {
+  //   title: 'Battery Level',
+  //   serviceId: 'battery_service',
+  //   characteristicId: 'battery_level',
+  //   panelType: "custom",
+  //   structure: ['Uint8'],
+  //   data: {battery:[]},
+  //   properties: ['notify'],
+  //   textFormat: function(value) {
+  //     return numeral(value).format('0.0') + '%';
+  //   },
+  //   create: function(panelId) {
+  //     let panelTemplate = loadPanelTemplate(panelId, 'battery-level');
+  //     this.update(panelId);
+  //   },
+  //   update: function(panelId) {
+  //     let panelElement = document.querySelector("#dashboard > #" + panelId);
+  //     let value = null;
+  //     if (panels[panelId].data.battery.length > 0) {
+  //       value = panels[panelId].data.battery.pop();
+  //       panels[panelId].data.battery = [];
+  //     }
 
-      if (value != null && value <= 25) { // Show Red
-        panelElement.querySelector(".content .battery").classList.remove("battery-middle");
-        panelElement.querySelector(".content .battery").classList.add("battery-alert");
-      } else if (value == null || value <= 50) { // Show Yellow
-        panelElement.querySelector(".content .battery").classList.remove("battery-alert");
-        panelElement.querySelector(".content .battery").classList.add("battery-middle");
-      } else { // Show Green
-        panelElement.querySelector(".content .battery").classList.remove("battery-middle");
-        panelElement.querySelector(".content .battery").classList.remove("battery-alert");
-      }
+  //     if (value != null && value <= 25) { // Show Red
+  //       panelElement.querySelector(".content .battery").classList.remove("battery-middle");
+  //       panelElement.querySelector(".content .battery").classList.add("battery-alert");
+  //     } else if (value == null || value <= 50) { // Show Yellow
+  //       panelElement.querySelector(".content .battery").classList.remove("battery-alert");
+  //       panelElement.querySelector(".content .battery").classList.add("battery-middle");
+  //     } else { // Show Green
+  //       panelElement.querySelector(".content .battery").classList.remove("battery-middle");
+  //       panelElement.querySelector(".content .battery").classList.remove("battery-alert");
+  //     }
 
-      if (value == null) {
-        panelElement.querySelector(".content .percentage").innerHTML = '?';
-        panelElement.querySelector(".content .battery .level").style.width = '100%';
-        panelElement.querySelector(".content .battery").title = 'Battery Level: ?';
-      } else {
-        panelElement.querySelector(".content .battery .level").style.width = value + '%';
-        value = panels[panelId].textFormat(value);
-        panelElement.querySelector(".content .percentage").innerHTML = value;
-        panelElement.querySelector(".content .battery").title = 'Battery Level: ' + value;
-      }
-    },
-  },
+  //     if (value == null) {
+  //       panelElement.querySelector(".content .percentage").innerHTML = '?';
+  //       panelElement.querySelector(".content .battery .level").style.width = '100%';
+  //       panelElement.querySelector(".content .battery").title = 'Battery Level: ?';
+  //     } else {
+  //       panelElement.querySelector(".content .battery .level").style.width = value + '%';
+  //       value = panels[panelId].textFormat(value);
+  //       panelElement.querySelector(".content .percentage").innerHTML = value;
+  //       panelElement.querySelector(".content .battery").title = 'Battery Level: ' + value;
+  //     }
+  //   },
+  // },
   temperature: {
     serviceId: '0100',
     characteristicId: '0101',
@@ -340,37 +340,16 @@ async function connect() {
 
   // - Request a port and open a connection.
   if (!device) {
-    // logMsg('Connecting to device ...');
-    // let services = [];
-    // for (let panelId of Object.keys(panels)) {
-    //   services.push(getFullId(panels[panelId].serviceId));
-    // }
-    // if (knownOnly.checked) {
-    //   console.log("knownOnly was checked");
-    //   let knownBoards = Object.keys(boards);
-    //   knownBoards.pop();
-    //   let filters = [];
-    //   for(let board of knownBoards) {
-    //     filters.push({name: board});
-    //   }
-    //   device = await navigator.bluetooth.requestDevice({
-    //     // filters: filters,
-    //     optionalServices: services,
-    //     acceptAllDevices: true,
-    //   });
-    // } else {
-    //   console.log("knownOnly was NOT checked");
-    //   device = await navigator.bluetooth.requestDevice({
-    //     acceptAllDevices: true,
-    //     optionalServices: services,
-    //   });
-    // }
+    logMsg('Connecting to device ...');
+    let services = [];
+    for (let panelId of Object.keys(panels)) {
+      services.push(getFullId(panels[panelId].serviceId));
+    }
 
-    let filters = [];
-
-    let options = {};
-    options.acceptAllDevices = true;
-
+    let options = {
+      filters: [{name: "KlingonWedding"}],
+      optionalServices: services
+    };
     console.log('Requesting Bluetooth Device...');
     console.log('with ' + JSON.stringify(options));
     device = await navigator.bluetooth.requestDevice(options);
@@ -514,6 +493,7 @@ function getFullId(shortId) {
 }
 
 function logMsg(text) {
+  console.log("[log] " + text);
   // Update the Log
   if (showTimestamp.checked) {
     let d = new Date();
