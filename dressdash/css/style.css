@@ -561,6 +561,12 @@ a[href].lcar, a[href]:visited.lcar {
   background-color:var(--pink2);
   border-radius: 30px;
   transition: background-color 0.5s ease-in-out;
+
+  /* make button text unselectable */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
 }
 #dashboard .play-button .button:hover {
   background-color: var(--pink1);

@@ -493,6 +493,7 @@ function getFullId(shortId) {
 }
 
 function logMsg(text) {
+  alert(text);
   console.log("[log] " + text);
   // Update the Log
   if (showTimestamp.checked) {
