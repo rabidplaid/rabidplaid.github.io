@@ -337,6 +337,25 @@ function encodePacket(panelId, values) {
  * output stream.
  */
 async function connect() {
+  let filters = [];
+
+  let options = {};
+  options.acceptAllDevices = true;
+
+  log('Requesting Bluetooth Device...');
+  log('with ' + JSON.stringify(options));
+  navigator.bluetooth.requestDevice(options)
+  .then(device => {
+    log('> Name:             ' + device.name);
+    log('> Id:               ' + device.id);
+    log('> Connected:        ' + device.gatt.connected);
+  })
+  .catch(error => {
+    log('Argh! ' + error);
+  });
+
+  return;
+
   // - Request a port and open a connection.
   if (!device) {
     logMsg('Connecting to device ...');
