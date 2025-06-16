@@ -172,7 +172,8 @@ div.clear {
   overflow-x: auto;
   transition : color 0.1s linear;
   padding: 0 50px;
-  border: 20px solid #000;
+  border: 2px solid #000;
+  border-radius: 30px;
 }
 
 .footer {
