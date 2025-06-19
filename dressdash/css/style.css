@@ -509,6 +509,42 @@ a[href].lcar, a[href]:visited.lcar {
   display:none;
 }
 
+#dashboard .play-button .button {
+  font-family: var(--font-header);
+  cursor:pointer;
+  text-decoration: none;
+  font-weight:300;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #000;
+  padding:20px 35px;
+  font-size:3em;
+  background-color:var(--pink2);
+  border-radius: 30px;
+  transition: background-color 0.5s ease-in-out;
+
+  /* make button text unselectable */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+#dashboard .play-button .button:hover {
+  background-color: var(--pink1);
+}
+
+#dashboard .play-button .button.button2 {
+  background-color:var(--mauve);
+}
+
+#dashboard .play-button .button.button3 {
+  background-color:var(--ltorange);
+}
+
+#dashboard .play-button .button.button4 {
+  background-color:var(--color-secondary);
+}
+
 
 @media screen and (min-width: 1001px) {
 	.nav {
@@ -546,30 +582,6 @@ a[href].lcar, a[href]:visited.lcar {
 	.home-link, a.home-link, a.home-link:visited {
 		font-size:3.8em;
 	}
-}
-
-#dashboard .play-button .button {
-  font-family: var(--font-header);
-  cursor:pointer;
-  text-decoration: none;
-  font-weight:300;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: #000;
-  padding:20px 35px;
-  font-size:3em;
-  background-color:var(--pink2);
-  border-radius: 30px;
-  transition: background-color 0.5s ease-in-out;
-
-  /* make button text unselectable */
-  -webkit-user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10+/Edge */
-  user-select: none; /* Standard */
-}
-#dashboard .play-button .button:hover {
-  background-color: var(--pink1);
 }
 
 @media screen and (max-width: 1000px) {

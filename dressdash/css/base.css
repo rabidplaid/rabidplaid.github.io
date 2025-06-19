@@ -105,8 +105,6 @@ div.clear {
 
 #dashboard .title {
   text-align: left;
-  font-size: 18px;
-  font-weight: 600;
   line-height: 44px;
   padding-left: 10px;
   text-overflow: ellipsis;
@@ -302,8 +300,9 @@ div.clear {
 }
 
 /* Tone Panel */
-#dashboard .play-button .content {
+#dashboard .play-button .content, #dashboard .play-button .content2 {
   display: flex;
+  flex-flow:row wrap;
   align-items: center;
 }
 

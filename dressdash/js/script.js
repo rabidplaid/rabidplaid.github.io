@@ -240,6 +240,7 @@ let panels = {
     },
   },
   tone: {
+    title: 'Mode',
     serviceId: '0c00',
     characteristicId: '0c01',
     panelType: "custom",
@@ -259,6 +260,41 @@ let panels = {
         let button = this;
         button.disabled = true;
         playSound(300, 1000, function() {button.disabled = false;})
+      }
+      panelTemplate.querySelector(".content .button4").onclick = function() {
+        let button = this;
+        button.disabled = true;
+        playSound(400, 1000, function() {button.disabled = false;})
+      }
+      panelTemplate.querySelector(".content .button5").onclick = function() {
+        let button = this;
+        button.disabled = true;
+        playSound(500, 1000, function() {button.disabled = false;})
+      }
+      panelTemplate.querySelector(".content2 .button6").onclick = function() {
+        let button = this;
+        button.disabled = true;
+        playSound(600, 1000, function() {button.disabled = false;})
+      }
+      panelTemplate.querySelector(".content2 .button7").onclick = function() {
+        let button = this;
+        button.disabled = true;
+        playSound(700, 1000, function() {button.disabled = false;})
+      }
+      panelTemplate.querySelector(".content2 .button8").onclick = function() {
+        let button = this;
+        button.disabled = true;
+        playSound(800, 1000, function() {button.disabled = false;})
+      }
+      panelTemplate.querySelector(".content2 .button9").onclick = function() {
+        let button = this;
+        button.disabled = true;
+        playSound(900, 1000, function() {button.disabled = false;})
+      }
+      panelTemplate.querySelector(".content2 .button10").onclick = function() {
+        let button = this;
+        button.disabled = true;
+        playSound(1000, 1000, function() {button.disabled = false;})
       }
       this.packetSequence = this.structure;
     },
